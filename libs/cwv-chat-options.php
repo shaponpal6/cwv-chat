@@ -656,89 +656,89 @@ if (!class_exists('MrAssistantOptionsTree')) :
         public function mrScriptInit()
         {
             ?>
-            <script>
-                jQuery(document).ready(function ($) {
-                    //Initiate Color Picker
-                    $('.wp-color-picker-field').wpColorPicker();
+<script>
+jQuery(document).ready(function($) {
+    //Initiate Color Picker
+    $('.wp-color-picker-field').wpColorPicker();
 
-                    // Switches option sections
-                    $('.group').hide();
-                    var activetab = '';
-                    if (typeof (localStorage) != 'undefined') {
-                        activetab = localStorage.getItem("activetab");
-                    }
-                    if (activetab != '' && $(activetab).length) {
-                        $(activetab).fadeIn();
-                    } else {
-                        $('.group:first').fadeIn();
-                    }
-                    $('.group .collapsed').each(function () {
-                        $(this).find('input:checked').parent().parent().parent().nextAll().each(
-                            function () {
-                                if ($(this).hasClass('last')) {
-                                    $(this).removeClass('hidden');
-                                    return false;
-                                }
-                                $(this).filter('.hidden').removeClass('hidden');
-                            });
-                    });
+    // Switches option sections
+    $('.group').hide();
+    var activetab = '';
+    if (typeof(localStorage) != 'undefined') {
+        activetab = localStorage.getItem("activetab");
+    }
+    if (activetab != '' && $(activetab).length) {
+        $(activetab).fadeIn();
+    } else {
+        $('.group:first').fadeIn();
+    }
+    $('.group .collapsed').each(function() {
+        $(this).find('input:checked').parent().parent().parent().nextAll().each(
+            function() {
+                if ($(this).hasClass('last')) {
+                    $(this).removeClass('hidden');
+                    return false;
+                }
+                $(this).filter('.hidden').removeClass('hidden');
+            });
+    });
 
-                    if (activetab != '' && $(activetab + '-tab').length) {
-                        $(activetab + '-tab').addClass('cwv-tab-active');
-                    } else {
-                        $('.cwv-chat-admin-tabs a:first').addClass('cwv-tab-active');
-                    }
-                    $('.cwv-chat-admin-tabs a').click(function (evt) {
-                        $('.cwv-chat-admin-tabs a').removeClass('cwv-tab-active');
-                        $(this).addClass('cwv-tab-active').blur();
-                        var clicked_group = $(this).attr('href');
-                        if (typeof (localStorage) != 'undefined') {
-                            localStorage.setItem("activetab", $(this).attr('href'));
-                        }
-                        $('.group').hide();
-                        $(clicked_group).fadeIn();
-                        evt.preventDefault();
-                    });
+    if (activetab != '' && $(activetab + '-tab').length) {
+        $(activetab + '-tab').addClass('cwv-tab-active');
+    } else {
+        $('.cwv-chat-admin-tabs a:first').addClass('cwv-tab-active');
+    }
+    $('.cwv-chat-admin-tabs a').click(function(evt) {
+        $('.cwv-chat-admin-tabs a').removeClass('cwv-tab-active');
+        $(this).addClass('cwv-tab-active').blur();
+        var clicked_group = $(this).attr('href');
+        if (typeof(localStorage) != 'undefined') {
+            localStorage.setItem("activetab", $(this).attr('href'));
+        }
+        $('.group').hide();
+        $(clicked_group).fadeIn();
+        evt.preventDefault();
+    });
 
-                    $('.wpsa-browse').on('click', function (event) {
-                        event.preventDefault();
+    $('.wpsa-browse').on('click', function(event) {
+        event.preventDefault();
 
-                        var self = $(this);
+        var self = $(this);
 
-                        // Create the media frame.
-                        var file_frame = wp.media.frames.file_frame = wp.media({
-                            title: self.data('uploader_title'),
-                            button: {
-                                text: self.data('uploader_button_text'),
-                            },
-                            multiple: false
-                        });
+        // Create the media frame.
+        var file_frame = wp.media.frames.file_frame = wp.media({
+            title: self.data('uploader_title'),
+            button: {
+                text: self.data('uploader_button_text'),
+            },
+            multiple: false
+        });
 
-                        file_frame.on('select', function () {
-                            attachment = file_frame.state().get('selection').first().toJSON();
-                            self.prev('.wpsa-url').val(attachment.url).change();
-                        });
+        file_frame.on('select', function() {
+            attachment = file_frame.state().get('selection').first().toJSON();
+            self.prev('.wpsa-url').val(attachment.url).change();
+        });
 
-                        // Finally, open the modal
-                        file_frame.open();
-                    });
+        // Finally, open the modal
+        file_frame.open();
+    });
 
-                    $('#mrAssistantRules').on('click', function (event) {
-                        event.preventDefault();
+    $('#mrAssistantRules').on('click', function(event) {
+        event.preventDefault();
 
-                        event.target.focus();
-                        event.target.select();
-                        event.target.setSelectionRange(0, 99999);
-                        document.execCommand("copy");
-                        const status = document.getElementById("mrAssistantRulesStatus");
-                        if (status) {
-                            status.innerHTML = '<h2><small>Copied to the clipboard!!</small></h2>';
-                        }
-                    });
+        event.target.focus();
+        event.target.select();
+        event.target.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        const status = document.getElementById("mrAssistantRulesStatus");
+        if (status) {
+            status.innerHTML = '<h2><small>Copied to the clipboard!!</small></h2>';
+        }
+    });
 
-                });
-            </script>
-            <?php
+});
+</script>
+<?php
             $this->mrOlderVersionStyle();
         }
 
@@ -754,16 +754,16 @@ if (!class_exists('MrAssistantOptionsTree')) :
 
             if (version_compare($wp_version, '3.8', '<=')) {
                 ?>
-                <style type="text/css">
-                    .form-table th {
-                        padding: 20px 10px;
-                    }
+<style type="text/css">
+.form-table th {
+    padding: 20px 10px;
+}
 
-                    #wpbody-content .metabox-holder {
-                        padding-top: 5px;
-                    }
-                </style>
-                <?php
+#wpbody-content .metabox-holder {
+    padding-top: 5px;
+}
+</style>
+<?php
             }
         }
 
@@ -805,26 +805,26 @@ if (!class_exists('MrAssistantOptionsTree')) :
         public function mrSettingForms()
         {
             ?>
-            <div class="cwv-chat-setting-fields">
-                <?php foreach ($this->mr_sections as $form) { ?>
-                    <div id="<?php echo $form['id']; ?>" class="group" style="display: none;">
-                        <form method="post" action="options.php">
-                            <?php
+<div class="cwv-chat-setting-fields">
+    <?php foreach ($this->mr_sections as $form) { ?>
+    <div id="<?php echo $form['id']; ?>" class="group" style="display: none;">
+        <form method="post" action="options.php">
+            <?php
                             do_action('wsa_form_top_' . $form['id'], $form);
                             settings_fields($form['id']);
                             do_settings_sections($form['id']);
                             do_action('wsa_form_bottom_' . $form['id'], $form);
                             if (isset($this->mr_fields[$form['id']])):
                                 ?>
-                                <div style="padding-left: 10px">
-                                    <?php submit_button(); ?>
-                                </div>
-                            <?php endif; ?>
-                        </form>
-                    </div>
-                <?php } ?>
+            <div style="padding-left: 10px">
+                <?php submit_button(); ?>
             </div>
-            <?php
+            <?php endif; ?>
+        </form>
+    </div>
+    <?php } ?>
+</div>
+<?php
             $this->mrScriptInit();
         }
     }

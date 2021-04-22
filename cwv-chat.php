@@ -102,6 +102,7 @@ if ( ! defined( 'WPCWV_DIR' ) ) {
 if ( ! defined( 'WPCWV_PATH' ) ) {
 	define( 'WPCWV_PATH', plugin_dir_path( __FILE__ ) );
 }
+
 define( 'CWV_WIDGET_PATH', plugin_dir_path( __FILE__ ) . '/cwv-chat-console' );
 define( 'CWV_ASSET_MANIFEST',   WPCWV_DIR.'/cwv-chat-console/build/asset-manifest.json' );
 

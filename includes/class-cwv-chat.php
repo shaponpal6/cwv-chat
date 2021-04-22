@@ -165,7 +165,7 @@ class Cwv_Chat {
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'cwv_chat_admin_menu' ); 
 		$this->loader->add_action('admin_init', $plugin_admin, 'mrSettingsInitialized');
 
-		//React
+		//React 
 		$this->loader->add_filter( 'script_loader_tag', $plugin_admin, 'script_loader_tag', 10, 2 );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'react_enqueue_scripts' );
 

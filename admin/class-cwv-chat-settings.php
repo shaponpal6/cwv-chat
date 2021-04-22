@@ -22,7 +22,7 @@ if (!class_exists('CWVChatSettings')) :
     class CWVChatSettings
     {
 
-        /**
+        /** 
          * Set all Mr. Assistant settings sections.
          * Need a unique id for every section.
          * Add a section specific name that will appear as tab.
